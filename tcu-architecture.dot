@@ -1,0 +1,24 @@
+digraph TCU_Architecture {
+    rankdir=TB; // Top to Bottom layout
+    node [shape=box, style=filled, color=lightblue];
+
+    // Title
+    labelloc="t"; // Place label at the top
+    fontsize=20;
+    label="TCU Architecture";
+
+    // Components
+    MP9486A [label="MP9486A (Power Regulator)", color=lightyellow];
+    ESP32 [label="ESP32-U4WDH (MCU)", color=lightyellow];
+    MC60 [label="MC60 (Modem)", color=lightyellow];
+    Cloud [label="Cloud/Server", color=lightgreen];
+
+    // Power connections
+    MP9486A -> ESP32 [label="Regulated Power"];
+    MP9486A -> MC60 [label="Regulated Power"];
+
+    // Communication connections
+    ESP32 -> MC60 [label="UART/SPI/I2C"];
+    ESP32 -> MC60 [label="GPIO Control"];
+    MC60 -> Cloud [label="Cellular Network"];
+}
